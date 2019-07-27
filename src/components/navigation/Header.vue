@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Stock Trader</a>
+          <router-link tag="li" to="/ciuciu"><a class="nav-link">Stock Trader</a></router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Portfolio</a>
