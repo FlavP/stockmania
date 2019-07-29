@@ -29,7 +29,7 @@
         </li>
       </ul>
       <div class="nav nav-item">
-        <span class="navbar-text">Funds: $10000</span>
+        <span class="navbar-text">Funds: ${{ getMoney }}</span>
       </div>
     </div>
   </nav>
@@ -37,7 +37,12 @@
 
 <script>
   export default {
-    name: 'Header'
+    name: 'Header',
+    computed: {
+      getMoney() {
+        return this.$store.state.money
+      }
+    }
   }
 </script>
 
