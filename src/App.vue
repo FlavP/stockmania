@@ -7,10 +7,12 @@
 <script>
 import Header from './components/navigation/Header'
 
+
+
 export default {
   name: 'App',
   components: {
-    'app-header': Header
+    appHeader: Header
   }
 }
 </script>
