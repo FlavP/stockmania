@@ -2,11 +2,13 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+          <router-link  class="nav-item" tag="li" to="/" active-class="active" exact>
+            <a class="nav-link">Stock Trader</a>
+          </router-link>
         <li class="nav-item">
-          <router-link tag="li" to=""><a class="nav-link">Stock Trader</a></router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Portfolio</a>
+          <router-link  class="nav-item" tag="li" to="/portfolio" active-class="active">
+            <a class="nav-link">Portfolio</a>
+          </router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Stocks</a>
