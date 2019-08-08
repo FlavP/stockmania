@@ -25,6 +25,12 @@ export const store = new Vuex.Store({
   },
   mutations: {
     buyStocks(state, payload) {
+      let priceObject = state.prices.find(price => price.company === payload.company);
+      if (state.money - payload.amount * priceObject.price > 0)
+        state.money -= payload.amount * priceObject.price;
+      else {
+        alert("I'm afraid you are overreaching");
+      }
       let found = false;
       for (let stock of state.stocks){
         if (stock.company === payload.company){

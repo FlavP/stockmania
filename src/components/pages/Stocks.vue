@@ -98,10 +98,17 @@
 
     methods: {
       buyStocks(stocksBought){
+        this.resetInputs();
         this.$store.commit('buyStocks',{
           company   : stocksBought.company,
           amount    : stocksBought.amount
         });
+      },
+      resetInputs(){
+        this.bmwAmount = '';
+        this.googleAmount = '';
+        this.twitterAmount = '';
+        this.appleAmount = '';
       }
     },
 
