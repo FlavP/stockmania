@@ -10,9 +10,9 @@
             <a class="nav-link">Portfolio</a>
           </router-link>
         </li>
-        <li class="nav-item">
+        <router-link class="nav-item" tag="li" to="/stocks" active-class="active">
           <a class="nav-link" href="#">Stocks</a>
-        </li>
+        </router-link>
       </ul>
       <ul class="navbar-nav navbar-right mr-auto">
         <li class="nav-item">
