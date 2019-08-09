@@ -3,43 +3,48 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const prices = [
-    { company : 'bmw', price : 75 },
-    { company : 'twitter', price : 9 },
-    { company : 'apple', price : 312 },
-    { company : 'google', price : 114 },
+const stocksAvailable = [
+    { company : 'BMW', price : 75 },
+    { company : 'Twitter', price : 9 },
+    { company : 'Apple', price : 312 },
+    { company : 'Google', price : 114 },
   ];
 
-let stocks = [];
+let stocksBought = [];
 
 export const store = new Vuex.Store({
   state: {
     money: 10000,
-    prices,
-    stocks
+    stocksAvailable,
+    stocksBought,
   },
   getters: {
-    getPrice: (state) => company => {
-      return state.prices.find(price => price.company === company);
+    loadStocks: (state) => {
+      return state.stocksAvailable;
+    },
+    getStocks: (state) => {
+      return state.stocksBought;
     }
   },
   mutations: {
     buyStocks(state, payload) {
-      let priceObject = state.prices.find(price => price.company === payload.company);
+      let priceObject = state.stocksAvailable.find(stock => stock.company === payload.company);
       if (state.money - payload.amount * priceObject.price > 0)
         state.money -= payload.amount * priceObject.price;
       else {
         alert("I'm afraid you are overreaching");
       }
       let found = false;
-      for (let stock of state.stocks){
+      for (let stock of state.stocksBought){
         if (stock.company === payload.company){
-          stock.amount += payload.amount;
+          stock.amount = parseFloat(stock.amount);
+          stock.amount += parseFloat(payload.amount);
+          stock.price  = parseFloat(payload.price);
           found = true;
         }
       }
       if (!found)
-        state.stocks.push(payload);
+        state.stocksBought.push(payload);
     }
   }
 });
