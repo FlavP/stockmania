@@ -45,6 +45,20 @@ export const store = new Vuex.Store({
       }
       if (!found)
         state.stocksBought.push(payload);
+    },
+    sellStocks(state, payload) {
+      state.money += parseFloat(payload.amount) * payload.price;
+      let stockObject = state.stocksBought.find(stock => stock.company === payload.company);
+      if (payload.amount === stockObject.amount){
+        state.stocksBought.filter( el => el.company !== stockObject.company );
+      } else {
+        for (let tinyStock of state.stocksBought){
+          if (tinyStock.company === payload.company){
+            tinyStock.amount -= payload.amount;
+          }
+        }
+      }
+
     }
   }
 });

@@ -1,18 +1,22 @@
 <template>
 
 <div class="row">
-  <div class="col-md-6" v-for="(stock, index) in stocks">
-    <div class="card">
+  <div class="col-md-6" v-for="(stock) in stocks">
+    <div class="card" v-if="stock.amount > 0">
       <div class="card-body stock">
         <div class="text-blue card-title">
           <h3 class="d-inline">{{ stock.company }}</h3>
-          <span class="text-small">(Price: {{ stock.price }})</span>
+          <span class="text-small">(Price: {{ stock.price }} | Amount: {{ stock.amount }})</span>
         </div>
         <div class="input-group mb-3">
           <input class="form-control" placeholder="Quantity" type="text"
-                 v-model="selling[index]">
+                 v-model="selling[stock.company]">
           <button class="btn btn-danger btn-sm"
-                  @click="sellStocks(stock, index)">
+                  @click="sellStocks({
+                                    'company' : stock.company,
+                                    'price'   : parseFloat(stock.price),
+                                    'amount'  : selling[stock.company]
+                  })">
             Sell
           </button>
         </div>
@@ -39,8 +43,17 @@
         },
         methods: {
             sellStocks(stock) {
-                if (stock){
-                    console.log(stock);
+                this.selling = [];
+                let inStock = this.stocks.find(element => element.company === stock.company );
+                if (parseInt(stock.amount) > parseInt(inStock.amount)){
+                    alert(`You have only ${inStock.amount} stocks from ${stock.company}`);
+                } else {
+                    this.$store.commit('sellStocks', {
+                        company: stock.company,
+                        price: stock.price,
+                        amount: stock.amount
+                    });
+                    this.loadStocks;
                 }
             }
         },

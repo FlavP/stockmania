@@ -8,12 +8,12 @@
             <span class="text-small">(Price: {{ stock.price }})</span>
           </div>
           <div class="input-group mb-3">
-            <input class="form-control" placeholder="Quantity" type="text" v-model="bought[stock.company.toLowerCase()]">
+            <input class="form-control" placeholder="Quantity" type="text" v-model="bought[stock.company]">
             <button class="btn btn-success btn-sm"
                                   @click="buyStocks({
                                     'company' : stock.company,
                                     'price'   : parseFloat(stock.price),
-                                    'amount'  : bought[stock.company.toLowerCase()]
+                                    'amount'  : bought[stock.company]
                                   })"
                           >
               Buy
@@ -37,18 +37,13 @@
 
         methods: {
             buyStocks(stocksBought) {
-                this.resetInputs();
+                this.bought = [];
                 this.$store.commit('buyStocks', {
                     company: stocksBought.company,
                     price: stocksBought.price,
                     amount: stocksBought.amount
                 });
             },
-            resetInputs() {
-                for (let buy of this.bought){
-                    buy = '';
-                }
-            }
         },
 
         computed: {
