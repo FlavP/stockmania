@@ -16,15 +16,15 @@
       </ul>
       <ul class="navbar-nav navbar-right mr-auto">
         <li class="nav-item">
-          <button class="btn nav-link" @click="nextDay()">End Day</button>
+          <button class="btn nav-link" @click="nextDay">End Day</button>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Save & Load
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Save</a>
-            <a class="dropdown-item" href="#">Load</a>
+            <button class="btn dropdown-item" @click="saveStocks">Save</button>
+            <button class="btn dropdown-item" href="#">Load</button>
           </div>
         </li>
       </ul>
@@ -46,6 +46,17 @@
     methods: {
       nextDay() {
         this.$store.commit('changePrices');
+      },
+      saveStocks() {
+        this.$http.put('', {
+          money           : this.getMoney,
+          stocksAvailable : this.$store.state.stocksAvailable,
+          stocksBought    : this.$store.state.stocksBought
+        }).then(response => {
+            alert('Save was successful');
+        }, error => {
+            console.log(error);
+        });
       }
     }
   }
