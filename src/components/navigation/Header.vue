@@ -16,7 +16,7 @@
       </ul>
       <ul class="navbar-nav navbar-right mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">End Day</a>
+          <button class="btn nav-link" @click="nextDay()">End Day</button>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,6 +41,11 @@
     computed: {
       getMoney() {
         return this.$store.state.money
+      }
+    },
+    methods: {
+      nextDay() {
+        this.$store.commit('changePrices');
       }
     }
   }

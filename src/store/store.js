@@ -58,7 +58,20 @@ export const store = new Vuex.Store({
           }
         }
       }
-
+    },
+    changePrices(state) {
+      for(let stock of stocksAvailable){
+        let ran = Math.random() * (stock.price + 1) / 9;
+        let plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+        let percent = ran * plusOrMinus;
+        if (stock.price < 1 && percent < 0)
+          stock.price += 1;
+        else
+          stock.price += Math.floor(percent);
+        let bought = state.stocksBought.find(bought => bought.company === stock.company);
+        if (typeof bought !== 'undefined')
+          bought.price = stock.price;
+      }
     }
   }
 });
