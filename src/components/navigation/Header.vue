@@ -24,7 +24,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button class="btn dropdown-item" @click="saveStocks">Save</button>
-            <button class="btn dropdown-item" href="#">Load</button>
+            <button class="btn dropdown-item" @click="loadStocks">Load</button>
           </div>
         </li>
       </ul>
@@ -37,6 +37,11 @@
 
 <script>
   export default {
+    data() {
+      return {
+        remoteStocks : []
+      }
+    },
     name: 'Header',
     computed: {
       getMoney() {
@@ -57,6 +62,9 @@
         }, error => {
             console.log(error);
         });
+      },
+      loadStocks() {
+
       }
     }
   }
