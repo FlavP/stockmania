@@ -26,12 +26,14 @@
 </template>
 
 <script>
+  import {EventBus} from "../../main";
     export default {
         name: "Stocks",
 
         data() {
             return {
                 bought : [],
+                stocks : []
             };
         },
 
@@ -49,12 +51,16 @@
         computed: {
             loadStocks() {
                 this.stocks = this.$store.getters.loadStocks;
-            }
+            },
         },
 
         created() {
             this.loadStocks;
-        }
+          EventBus.$on('reloadStocks', () => {
+            this.loadStocks;
+          });
+        },
+
     }
 </script>
 

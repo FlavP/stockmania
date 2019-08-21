@@ -6,6 +6,8 @@ import router from './router'
 import {store} from './store/store'
 import VueResource from 'vue-resource'
 
+export const EventBus = new Vue();
+
 Vue.config.productionTip = false;
 Vue.use(VueResource);
 Vue.http.options.root = 'https://stocks-a8150.firebaseio.com/traded.json';

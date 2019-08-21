@@ -72,6 +72,14 @@ export const store = new Vuex.Store({
         if (typeof bought !== 'undefined')
           bought.price = stock.price;
       }
+    },
+    loadSavedData(state, payload){
+      state.money = payload.money;
+      state.stocksAvailable = payload.stocksAvailable.slice();
+      if (payload.stocksBought)
+        state.stocksBought = payload.stocksBought.slice();
+      else
+        state.stocksBought = [];
     }
   }
 });

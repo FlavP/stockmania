@@ -28,6 +28,7 @@
 </template>
 
 <script>
+  import {EventBus} from "../../main";
     export default {
         data() {
             return {
@@ -59,6 +60,9 @@
         },
         created() {
             this.loadStocks;
+          EventBus.$on('reloadStocks', () => {
+              this.loadStocks;
+            })
         }
     }
 </script>
