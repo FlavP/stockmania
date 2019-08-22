@@ -40,11 +40,16 @@
         methods: {
             buyStocks(stocksBought) {
                 this.bought = [];
-                this.$store.commit('buyStocks', {
-                    company: stocksBought.company,
-                    price: stocksBought.price,
-                    amount: stocksBought.amount
-                });
+                if (stocksBought.amount > 0) {
+                    this.$store.commit('buyStocks', {
+                        company: stocksBought.company,
+                        price: stocksBought.price,
+                        amount: stocksBought.amount
+                    });
+                }
+                else {
+                    alert("You must fill in the number of shares you want to purchase");
+                }
             },
         },
 

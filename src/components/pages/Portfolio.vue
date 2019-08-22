@@ -49,12 +49,17 @@
                 if (parseInt(stock.amount) > parseInt(inStock.amount)){
                     alert(`You have only ${inStock.amount} stocks from ${stock.company}`);
                 } else {
-                    this.$store.commit('sellStocks', {
-                        company: stock.company,
-                        price: stock.price,
-                        amount: stock.amount
-                    });
-                    this.loadStocks;
+                    if (stock.amount > 0){
+                        this.$store.commit('sellStocks', {
+                            company: stock.company,
+                            price: stock.price,
+                            amount: stock.amount
+                        });
+                        this.loadStocks;
+                    }
+                    else {
+                        alert("You must fill in the number of shares you want to purchase");
+                    }
                 }
             }
         },
