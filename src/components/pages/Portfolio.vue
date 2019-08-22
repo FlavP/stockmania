@@ -8,7 +8,7 @@
           <h3 class="d-inline">{{ stock.company }}</h3>
           <span class="text-small">(Price: {{ stock.price }} | Amount: {{ stock.amount }})</span>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 line">
           <input class="form-control" placeholder="Quantity" type="text"
                  v-model="selling[stock.company]">
           <button class="btn btn-danger btn-sm"
@@ -73,7 +73,16 @@
 </script>
 
 <style scoped>
+
+  .card {
+    margin-top: 30px;
+  }
+
   button {
     margin-left: 300px;
+  }
+
+  .line {
+    padding: 10px;
   }
 </style>

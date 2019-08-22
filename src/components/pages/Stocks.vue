@@ -7,7 +7,7 @@
             <h3 class="d-inline">{{ stock.company }}</h3>
             <span class="text-small">(Price: {{ stock.price }})</span>
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 line">
             <input class="form-control" placeholder="Quantity" type="text" v-model="bought[stock.company]">
             <button class="btn btn-success btn-sm"
                                   @click="buyStocks({
@@ -71,6 +71,10 @@
 
 <style scoped>
 
+  .card {
+    margin-top: 30px;
+  }
+
   .text-green {
     background-color: lightgreen;
     color: darkgreen;
@@ -83,5 +87,9 @@
 
   button {
     margin-left: 300px;
+  }
+
+  .line {
+    padding: 10px;
   }
 </style>
