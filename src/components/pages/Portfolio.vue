@@ -94,4 +94,8 @@
     transition-timing-function: ease;
     opacity: 0;
   }
+
+  .sfade-move {
+    transition: transform 1s;
+  }
 </style>
