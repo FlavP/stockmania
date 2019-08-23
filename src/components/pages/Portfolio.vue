@@ -93,6 +93,7 @@
     transition-property: opacity;
     transition-timing-function: ease;
     opacity: 0;
+    position: absolute;
   }
 
   .sfade-move {
