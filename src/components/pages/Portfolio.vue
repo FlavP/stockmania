@@ -1,7 +1,8 @@
 <template>
 
 <div class="row">
-  <div class="col-md-6" v-for="(stock) in stocks">
+  <transition-group name="sfade">
+    <div class="col-md-6" v-for="(stock) in stocks" :key="stock.company">
     <div class="card" v-if="stock.amount > 0">
       <div class="card-body stock">
         <div class="text-blue card-title">
@@ -23,6 +24,7 @@
       </div>
     </div>
   </div>
+  </transition-group>
 </div>
 
 </template>
@@ -84,5 +86,12 @@
 
   .line {
     padding: 10px;
+  }
+
+  .sfade-leave-active {
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+    opacity: 0;
   }
 </style>
