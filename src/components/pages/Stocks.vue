@@ -14,7 +14,8 @@
                                     'company' : stock.company,
                                     'price'   : parseFloat(stock.price),
                                     'amount'  : bought[stock.company]
-                                  })"
+                                  })",
+                                  :disabled="bought[stock.company] <= 0 || !Number.isInteger(bought[stock.company])"
                           >
               Buy
             </button>
